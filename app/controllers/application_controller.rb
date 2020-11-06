@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def hello
-    if session[:name].present?
-      redirect_to root
-    else
-      redirect_to login_path
-    end
+    redirect_to login_path unless session[:name].present?
   end
 end
